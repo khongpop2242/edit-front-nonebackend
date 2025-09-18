@@ -1,0 +1,93 @@
+import React, { useState } from "react";
+import axios from "axios";
+import "./Login.css";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
+      localStorage.setItem("token", res.data.token);
+      window.location.href = "/profile";
+    } catch (err) {
+      setError(err?.response?.data?.message || "เข้าสู่ระบบไม่สำเร็จ");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="login-page">
+      <div className="login-container">
+        {/* ซ้าย: โลโก้จาก public */}
+        <div className="login-left">
+          <img
+            className="login-illustration"
+            src="/logo-login-kaokai.png"
+            alt="KaoKai Furniture Login"
+          />
+        </div>
+
+        {/* ขวา: ฟอร์ม */}
+        <div className="login-right">
+          <h1>เข้าสู่ระบบ</h1>
+
+          <form onSubmit={onSubmit} className="login-form">
+            <label htmlFor="email">อีเมล์ผู้ใช้งาน</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="อีเมล์ผู้ใช้งาน"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <label htmlFor="password">รหัสผ่าน</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="ระบุรหัสผ่าน( อย่างน้อย8ตัวอักษร )"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <div className="login-utils">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert("ยังไม่เปิดใช้ฟีเจอร์ลืมรหัสผ่าน");
+                }}
+              >
+                ลืมรหัสผ่าน?
+              </a>
+            </div>
+
+            {error && <div className="error">{error}</div>}
+
+            <button className="btn-login" type="submit" disabled={loading}>
+              {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
+            </button>
+
+            <div className="signup-note">
+              หากคุณยังไม่มีบัญชีสามารถ{" "}
+              <a href="/register">สมัครสมาชิก</a> ได้ที่นี่
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}

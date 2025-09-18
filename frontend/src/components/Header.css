@@ -1,0 +1,197 @@
+/* container helper (ถ้ามี .container อยู่แล้วข้ามส่วนนี้ได้) */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* header */
+.header { background:#fff; box-shadow:0 2px 5px rgba(0,0,0,.08); }
+.header-top { padding:14px 0; border-bottom:1px solid #eee; }
+.header-top-content {
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+}
+
+/* logo */
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+/* โลโก้แบบรูปภาพ */
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-img {
+  height: 36px;        /* ปรับให้พอดีกับแถบบน */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+@media (max-width: 768px){
+  .logo-img{ height:32px; }
+}
+
+
+/* search */
+.search-bar{ flex:1; max-width:520px; position:relative; }
+.search-bar form{ display:flex; position:relative; }
+.search-bar input{
+  width:100%; height:42px;
+  padding:0 56px 0 16px;
+  background:#e9e9eb; border:1px solid #d9d9de;
+  border-radius:999px; font-size:14px; color:#111827;
+  outline:none;
+}
+.search-bar input::placeholder{ color:#9ca3af; }
+.search-button{
+  position:absolute; right:6px; top:50%; transform:translateY(-50%);
+  width:34px; height:34px;
+  border-radius:999px; border:1px solid #d1d5db; background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+}
+.search-button i{ font-size:14px; color:#111; }
+.search-button:hover{ box-shadow:0 2px 6px rgba(0,0,0,.08); }
+
+/* autocomplete */
+.search-suggestions{
+  position:absolute; top:calc(100% + 8px); left:0; right:0;
+  background:#fff; border:1px solid #e5e7eb; border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  max-height:300px; overflow-y:auto; z-index:20; padding:6px 0;
+}
+.search-suggestions li{
+  display:flex; justify-content:space-between; gap:12px;
+  padding:10px 12px; font-size:14px; cursor:pointer;
+}
+
+/* ลดพื้นที่เผื่อด้านขวา เพราะไม่มีปุ่มกลมแล้ว */
+.search-bar input{
+  padding: 0 40px 0 16px; /* เดิม 56px */
+}
+
+/* ปุ่มไอคอนให้โปร่งใส ไม่มีเส้นขอบ/มุมโค้ง */
+.search-button{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;            /* คงพื้นที่คลิกเล็กพอดี */
+  height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;       /* เอารูปทรงวงกลมออก */
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ปรับขนาดและสีไอคอน */
+.search-button i{
+  font-size: 18px;
+  color: #111;            /* ให้ตรงกับภาพตัวอย่าง */
+}
+
+/* ไม่มีเอฟเฟกต์ hover เป็นกรอบ/เงา */
+.search-button:hover{ box-shadow: none; }
+
+/* ปรับระยะขวาให้พอดีกับไอคอนบาง */
+.search-bar input{
+  padding: 0 40px 0 16px;
+}
+
+/* ปุ่มโปร่งใส ไม่มีกรอบ */
+.search-button{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  width:24px; height:24px; background:transparent; border:none; padding:0;
+  cursor:pointer;
+}
+
+/* ไอคอนเส้นบาง ปรับได้ด้วยตัวแปรด้านล่าง */
+:root{ --search-stroke: 1.7; }      /* ลอง 1.5–2.0 เพื่อให้ตรงรูป */
+.icon-thin-search{
+  width:18px; height:18px; display:block;
+  stroke:#111; stroke-width:var(--search-stroke);
+  fill:none; stroke-linecap:round; stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+
+/* ไม่มีเงาเวลา hover */
+.search-button:hover{ box-shadow:none; }
+
+.search-suggestions li:hover{ background:#f9fafb; }
+.suggest-name{ color:#111827; font-weight:500; }
+.suggest-model{ color:#6b7280; }
+
+/* contact pills */
+.contact-info{ display:flex; align-items:center; gap:10px; }
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  height:38px; padding:0 14px; border-radius:999px;
+  font-weight:700; font-size:13px; text-decoration:none;
+  box-shadow:0 2px 6px rgba(0,0,0,.08) inset;
+  white-space:nowrap;
+}
+.pill-ic{ font-size:14px; }
+.pill-green{ background:#09a52a; color:#fff; }
+.pill-red{ background:#d51616; color:#fff; }
+.pill-gray{ background:#BBBBBB; color:#fff; letter-spacing:.5px; }
+
+/* actions */
+.header-actions{ display:flex; align-items:center; gap:16px; }
+.cart-icon, .profile-icon{ position:relative; color:#111; text-decoration:none; }
+.cart-icon i{ font-size:24px; }
+.profile-icon i{ font-size:28px; }
+
+.cart-badge{
+  position:absolute; top:-6px; right:-8px;
+  background:#d51616; color:#fff; border-radius:999px;
+  width:18px; height:18px; display:flex; align-items:center; justify-content:center;
+  font-size:10px; font-weight:800;
+}
+
+/* nav strip */
+.navigation{ background:#C00101; }
+.nav-menu{
+  display:flex; list-style:none; margin:0; padding:0;
+  justify-content:space-between; align-items:center;
+}
+.nav-menu li{ flex:1; display:flex; }
+/* ขยายเฉพาะข้อความเมนู */
+.nav-label{
+  display:inline-block;
+  transition: transform .15s ease;
+}
+.nav-menu a:hover .nav-label,
+.nav-menu a:focus-visible .nav-label{
+  transform: scale(1.06); /* ปรับ 1.03–1.08 ได้ */
+}
+.nav-menu a{
+  flex:1; display:block; text-align:center;
+  padding:16px 12px; color:#fff; text-decoration:none;
+  font-weight:800; font-size:18px; white-space:nowrap;
+}
+
+/* เคารพผู้ใช้ที่ปิดแอนิเมชัน */
+@media (prefers-reduced-motion: reduce){
+  .nav-menu a{ transition: background-color .25s ease; }
+  .nav-menu a:hover,
+  .nav-menu a:focus-visible{ transform: none; }
+}
+
+
+/* responsive */
+@media (max-width: 992px){
+  .search-bar{ max-width:100%; }
+}
+@media (max-width: 768px){
+  .header-top-content{ flex-direction:column; gap:12px; }
+  .contact-info{ flex-wrap:wrap; justify-content:center; }
+  .nav-menu{ flex-direction:column; }
+  .nav-menu a{ font-size:16px; padding:14px 16px; }
+}
+
+/* ==== Contact pills: exact colors ==== */
+.pill {
+  color: #FFFFFF;                /* ให้ตัวอักษรเป็นขาว */
+}
+.pill-green { background: #00B900; }  /* LINE green */
+.pill-red   { background: #D20104; }  /* Phone red */
+
+/* ให้ไอคอนเป็นขาวไม่ว่ารูปแบบไหน */
+.pill i,
+.pill .pill-ic { color: inherit; }        /* Font Awesome <i> */
+.pill svg { stroke: currentColor; fill: none; }  /* ถ้าใช้ SVG */
+.pill img { filter: brightness(0) invert(1); }   /* ถ้าเป็นรูป PNG สีเข้ม ให้กลับเป็นขาว */
+

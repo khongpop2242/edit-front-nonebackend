@@ -1,0 +1,144 @@
+/* โทนมินิมอลแบบในภาพ */
+.contact-page {
+  padding: 40px 0;
+  background: #fff;
+  min-height: 100vh;
+}
+
+/* layout 2 คอลัมน์ซ้ายแคบ ขวากว้าง */
+.contact-two-col {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ซ้าย */
+.title {
+  margin: 0 0 16px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+}
+
+.company-block {
+  margin-bottom: 28px;
+}
+
+.company-name {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.company-block p {
+  margin: 4px 0;
+  color: #111;
+}
+
+.contactinfo-heading {
+  margin: 24px 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.contact-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-icons li {
+  margin: 14px 0;
+  font-size: 18px;
+  color: #111;
+}
+
+/* ขวา (ฟอร์ม) */
+.form-heading {
+  margin: 0 0 14px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+}
+
+.vertical-form {
+  display: grid;
+  gap: 12px;
+  max-width: 720px; /* ให้ความกว้างใกล้เคียงภาพ */
+}
+
+.vertical-form input,
+.vertical-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.vertical-form input:focus,
+.vertical-form textarea:focus {
+  border-color: #000;
+}
+
+.btn-submit {
+  background: #111;
+  color: #fff;
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  width: auto;              /* ปุ่มเล็กแบบในภาพ */
+  cursor: pointer;
+}
+
+.btn-submit:hover { opacity: 0.9; }
+
+/* กรอบรูปบริษัทด้านล่าง */
+.company-hero {
+  margin-top: 48px;
+  height: 360px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #111;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-two-col {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .vertical-form { max-width: 100%; }
+  .company-hero { height: 260px; }
+}
+.contact-icons li{
+  display: flex;
+  align-items: center;
+  gap: 10px;           /* ระยะห่างไอคอนกับข้อความ */
+  margin: 14px 0;
+  color: #111;
+}
+
+.contact-icons .fa-phone{
+  font-size: 18px;
+  width: 18px;         /* ความกว้างคงที่ของไอคอน */
+  text-align: center;
+}
+
+.phone-text{
+  font-size: 16px;
+  color: #111;
+  text-decoration: none;
+}
+
+.phone-text:hover{
+  text-decoration: underline;
+}

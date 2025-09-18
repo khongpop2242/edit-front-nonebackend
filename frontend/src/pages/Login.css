@@ -1,0 +1,124 @@
+/* layout หลัก */
+.login-page {
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: 40px 0 24px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 1080px;               /* พื้นที่กว้างขึ้นคล้ายภาพ */
+  display: grid;
+  grid-template-columns: 520px 460px; /* ซ้ายใหญ่ + ขวาฟอร์ม */
+  gap: 32px;
+  align-items: start;
+  padding: 0 16px;
+}
+
+/* ซ้าย: โลโก้ */
+.login-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.login-illustration {
+  width: clamp(280px, 36vw, 250px); /* ย่อ-ขยายอัตโนมัติตามความกว้างจอ */
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ขวา: ฟอร์ม */
+.login-right h1 {
+  font-size: 42px;                 /* หัวเรื่องใหญ่แบบในภาพ */
+  font-weight: 800;
+  margin: 8px 0 20px;
+}
+
+.login-form {
+  max-width: 460px;
+}
+
+.login-form label {
+  display: block;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 14px 16px;              /* ช่องใส่ข้อมูลสูงขึ้น */
+  border: 1.5px solid #d9d9d9;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.login-form input:focus {
+  border-color: #b40000;
+  box-shadow: 0 0 0 3px rgba(180, 0, 0, 0.08);
+}
+
+.login-utils {
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 0 14px;
+}
+
+.login-utils a {
+  color: #000;
+  font-size: 14px;
+  text-decoration: underline;       /* ให้ดูเป็นลิงก์เหมือนภาพ */
+}
+
+.error {
+  color: #b40000;
+  margin-bottom: 10px;
+}
+
+/* ปุ่มหลักสีแดง */
+.btn-login {
+  width: 100%;
+  padding: 16px 20px;               /* ปุ่มสูงและใหญ่ */
+  background: #b40000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform .08s ease, opacity .2s ease;
+}
+
+.btn-login:hover { transform: translateY(-1px); }
+.btn-login:disabled { opacity: .7; cursor: not-allowed; }
+
+.signup-note {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.signup-note a {
+  color: #b40000;
+  text-decoration: underline;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 560px;
+  }
+  .login-left {
+    display: none; /* มือถือ/แท็บเล็ตซ่อนโลโก้ซ้ายตามภาพรวม */
+  }
+  .login-right h1 {
+    text-align: center;
+    font-size: 34px;
+  }
+  .login-page { padding: 20px 0; }
+}
